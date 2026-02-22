@@ -1,4 +1,5 @@
 from vector_db_module import collection, embedding_model
+from statistical_analysis_module import analyze_documents
 
 def search_and_display(query):
     
@@ -69,6 +70,14 @@ if __name__ == "__main__":
         documents = results["documents"][0]
 
         search_and_display(query)
+
+        # ---------- YOUR MODULE ----------
+        analysis = analyze_documents(documents)
+
+        print("\n📊 Statistical Market Analysis:\n")
+        for k, v in analysis.items():
+            print(f"{k}: {v}")
+        # --------------------------------
 
         final_answer = simple_generator(query, documents)
 
